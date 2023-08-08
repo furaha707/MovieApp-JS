@@ -10,19 +10,21 @@
 //   }
 // }
 
-import Component from "./core/heropy";
+import Component from "./core/root";
 import fruitItem from "./components/fruitItem";
 // 상속은 확장 개념!
+
 
 export class App extends Component {
 
   constructor(){
     super({
-      state: {
+      tagName : 'article',
+      state : {
         fruits: [
-          {name : 'Apple', price: 1000},
-          {name : 'Banana', price: 2000},
-          {name : 'Cherry', price: 3000},
+          {name: 'Apple', price:1000},
+          {name: 'Banana', price:2000},
+          {name: 'Cherry', price:3000},
         ]
       }
     })
@@ -32,16 +34,12 @@ export class App extends Component {
   render(){
 
     this.el.innerHTML = 
-    `
-      <h1>Fruits</h1>
+    /* html */ `
+      <h1>Fruits!!!</h1>
       <ul></ul>
     `
-    //map과 filter 를 체이닝으로 사용할 수 있구나,,
 
-    const ulEl = this.el.querySelector('ul')
-    ulEl.append(
-      ...this.state.fruits.map(fruit => new fruitItem({props: {name: fruit.name, price: fruit.price}}).el)
-    )
-    console.log(this.el)
+    const ulEl = this.el.querySelector('ul');
+    ulEl.append(...this.state.fruits.map(fruit => new fruitItem({props: {name: fruit.name, price: fruit.price}}).el));
   }
 }

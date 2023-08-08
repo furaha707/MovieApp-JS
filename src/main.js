@@ -1,4 +1,4 @@
-import {App} from "./App1";
+import {App} from "./App";
 
 const Root = document.querySelector('#root');
 
