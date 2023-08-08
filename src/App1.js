@@ -12,6 +12,8 @@
 
 import Component from "./core/heropy";
 
+// 상속은 확장 개념!
+
 export class App extends Component {
 
   constructor(){
