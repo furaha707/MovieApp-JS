@@ -10,7 +10,7 @@
 //   }
 // }
 
-import Component from "./core/Root";
+import Component from "./core/root";
 import TheHeader from "./components/TheHeader";
 // 상속은 확장 개념!
 

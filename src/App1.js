@@ -10,7 +10,7 @@
 //   }
 // }
 
-import Component from "./core/Root";
+import Component from "./core/root";
 import fruitItem from "./components/FruitItem";
 // 상속은 확장 개념!
 
