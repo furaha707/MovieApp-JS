@@ -1,46 +1,45 @@
-// // export default class App {
-// //   constructor(){
-// //     this.el = document.createElement('div')
-// //     this.el.textContent = 'Hello World'
-// //     this.render();
-// //   }
-// //   // 프로토타입 부분
-// //   render(){
-// //     // 비워둠
-// //   }
-// // }
-
-// import Component from "./core/heropy";
-
-// // 상속은 확장 개념!
-
-// export class App extends Component {
-
+// export default class App {
 //   constructor(){
-//     super({
-//       state: {
-//         inputText: ''
-//       }
-//     })
-    
+//     this.el = document.createElement('div')
+//     this.el.textContent = 'Hello World'
+//     this.render();
 //   }
-
+//   // 프로토타입 부분
 //   render(){
-//     this.el.classList.add('search')
-//     this.el.innerHTML = /* html */`
-//     <input />
-//     <button>Click!</button>
-//     `
-//    const inputEl = this.el.querySelector('input')
-//     console.log(this.tagName)
-  
-//     inputEl.addEventListener('input', () => {
-//       this.state.inputText = inputEl.value
-//     })
-    
-//     const buttonEl = this.el.querySelector('button')
-//     buttonEl.addEventListener('click', () => {
-//       console.log(this.state.inputText)
-//     })
+//     // 비워둠
 //   }
 // }
+
+import Component from "./core/Root";
+import fruitItem from "./components/FruitItem";
+// 상속은 확장 개념!
+
+
+export class App extends Component {
+
+  constructor(){
+    super({
+      tagName : 'article',
+      state : {
+        fruits: [
+          {name: 'Apple', price:1000},
+          {name: 'Banana', price:2000},
+          {name: 'Cherry', price:3000},
+        ]
+      }
+    })
+    
+  }
+
+  render(){
+
+    this.el.innerHTML = 
+    /* html */ `
+      <h1>Fruits!!!</h1>
+      <ul></ul>
+    `
+
+    const ulEl = this.el.querySelector('ul');
+    ulEl.append(...this.state.fruits.map(fruit => new fruitItem({props: {name: fruit.name, price: fruit.price}}).el));
+  }
+}

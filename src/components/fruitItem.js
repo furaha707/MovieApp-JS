@@ -1,4 +1,4 @@
-import Component from "../core/root";
+import Component from "../core/Root";
 
 export default class fruitItem extends Component {
   constructor(payload){
