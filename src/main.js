@@ -5,6 +5,5 @@ const Root = document.querySelector('#root');
 Root.append(new App().el)
 
 router()
-// 왜 함수처럼 실행해,,? createRouter() 함수 데이터 반환
-// 페이지 관리하는 기능
+// createRouter() 가 반환한 함수 데이터
 

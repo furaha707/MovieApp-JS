@@ -18,6 +18,7 @@ export default class Component{
 function routeRender(routes){
 
   // 해쉬가 없는 경우를 위해 해쉬가 없어도 해쉬 붙게끔
+  // replaceState() 는 새고 없이 현재 url 변경 가능
   if(!location.hash){
     history.replaceState(null, '', '/#/')
   }
