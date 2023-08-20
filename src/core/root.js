@@ -28,6 +28,7 @@ function routeRender(routes){
   // 구조분해
   const [hash, queryString = ''] = location.hash.split('?')
 
+  // query 정보를 활용할 경우 필요
   //a=123&b=456
   //['a=123','b=456']
   //{a:'123', b:'456'}
@@ -61,5 +62,32 @@ export function createRouter(routes){
       routeRender(routes)
     })
     routeRender(routes)
+  }
+}
+
+// Store
+export class Store {
+  constructor(state){
+    this.state = {}
+    this.observers = {}
+    for(const key in state){
+      // this.state.message 를 지금 정의중임
+      Object.defineProperty(this.state, key, {
+        // 값에 접근하면
+        get: () => state[key], //state['message']
+        // 값에 할당하면
+        set: val => {
+          console.log(val)
+          state[key] = val
+          // this.observers['message']()
+          this.observers[key].forEach(observer => observer(val))
+        }
+      })
+    }
+  }
+  // 상태를 구독하는 개념?
+  subscribe(key, cb){
+  this.observers[key] = this.observers[key] || [];
+  this.observers[key].push(cb);
   }
 }
